@@ -21,5 +21,6 @@ export class AppComponent {
       new Date(),
       5
     );
+    this.mySnap.setLocation('à la montagne');
   }
 }

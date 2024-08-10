@@ -1,12 +1,20 @@
+import { SnapType } from "./snap-type.type";
+
 export class FaceSnap {
+    unsnapFaceSnapById(id: string) {
+      throw new Error('Method not implemented.');
+    }
     location? : string;
+    id: string;
     constructor (
         public title : string,
         public description: string,
         public imageUrl: string,
         public createdAt: Date,
         public snaps: number
-    ) {}
+    ) {
+        this.id = crypto.randomUUID().substring(0,8);
+    }
     addSnap() : void {
         this.snaps++;
     }
@@ -19,5 +27,12 @@ export class FaceSnap {
     withLocation(location: string) : FaceSnap {
         this.setLocation(location);
         return this;
+    }
+    snap(snapType: SnapType) {
+        if (snapType === 'snap') {
+          this.addSnap();
+        } else if (snapType === 'unsnap') {
+          this.removeSnap();
+        }
     }
 }
